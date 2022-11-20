@@ -1,0 +1,11 @@
+- naming private methods: _name
+- naming constructors: Name
+
+
+../
+As such, using plain objects as maps is dangerous. There are several possible
+ways to avoid this problem. First, it is possible to create objects with no
+prototype. If you pass null to Object.create, the resulting object will not
+derive from Object.prototype and can safely be used as a map.
+console.log("toString" in Object.create(null));
+// → false

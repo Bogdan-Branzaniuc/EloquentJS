@@ -1,0 +1,29 @@
+# The village of Meadowfield isn’t very big. It consists of 11 places with 14 roads
+# between them. It can be described with this array of roads:
+# const roads = [
+# "Alice's House-Bob's House", "Alice's House-Cabin",
+# "Alice's House-Post Office", "Bob's House-Town Hall",
+# "Daria's House-Ernie's House", "Daria's House-Town Hall",
+# "Ernie's House-Grete's House", "Grete's House-Farm",
+# "Grete's House-Shop", "Marketplace-Farm",
+# "Marketplace-Post Office", "Marketplace-Shop",
+# "Marketplace-Town Hall", "Shop-Town Hall"
+# ];
+
+# Data structures that don’t change are called immutable or persistent. They
+# behave a lot like strings and numbers in that they are who they are and stay
+# that way, rather than containing different things at different times.
+# In JavaScript, just about everything can be changed, so working with values
+# that are supposed to be persistent requires some restraint. There is a function
+# called Object.freeze that changes an object so that writing to its properties
+# is ignored. You could use that to make sure your objects aren’t changed, if
+# you want to be careful. Freezing does require the computer to do some extra
+# work, and having updates ignored is just about as likely to confuse someone as
+# having them do the wrong thing. So I usually prefer to just tell people that a
+# given object shouldn’t be messed with and hope they remember it.
+# let object = Object.freeze({value: 5});
+# object.value = 10;
+# console.log(object.value);
+# // → 5
+
+# Simulation 

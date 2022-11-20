@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html>
+<style>
+    #baloon {
+        position: absolute;
+        font-size: 40px;
+        margin-left: 40%;
+        margin-top: 40%;
+        width: 5%;
+        padding: 10px;
+    }
+</style>
+
+<body>
+    <p>press "Arrow Up" to inflate the baloon</p>
+    <p>, and "Arrow Down" to deflate it.</p>
+    <p>Be careful though, it might popp on you</p>
+    <p id="baloon" data-help="">🎈</p>
+    <p id="help"></p>
+</body>
+<footer>
+    <script>
+        let help = document.querySelector("#help");
+        let baloon = document.getElementById("baloon")
+        let texts = document.querySelectorAll("p")
+
+        document.addEventListener("keydown", poped)
+
+        function poped(e) {
+            let baloonSize = parseInt(document.defaultView.getComputedStyle(baloon).fontSize)
+            let ballMarginLeft = parseInt(document.defaultView.getComputedStyle(baloon).marginLeft)
+            let ballMarginTop = parseInt(document.defaultView.getComputedStyle(baloon).marginTop)
+
+            if (e.key === "ArrowUp") {
+                baloon.style.fontSize = baloonSize + baloonSize * 0.05 + "px"
+                baloon.style.marginLeft = ballMarginLeft - baloonSize * 0.025 + "px"
+                baloon.style.marginTop = ballMarginTop - baloonSize * 0.024 + "px"
+            } else if (e.key === "ArrowDown") {
+                baloon.style.fontSize = baloonSize - baloonSize * 0.05 + "px"
+                baloon.style.marginLeft = ballMarginLeft + baloonSize * 0.05 + "px"
+                baloon.style.marginTop = ballMarginTop + baloonSize * 0.05 + "px"
+
+            } if (baloonSize > 300) {
+                for (let text of texts) {
+                    text.textContent = ""
+                }
+                baloon.innerHTML = '💥'
+                help.textContent = "told ya!!"
+                document.removeEventListener("keydown", poped)
+            }
+        }
+    </script>
+</footer>
+
+</html>

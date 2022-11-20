@@ -1,0 +1,44 @@
+The way an <img> tag shows an image or an <a> tag causes a link to be followedwhen it is clicked is strongly tied to
+    the element type. But we can change
+    the styling associated with an element, such as the text color or underline. Here
+    is an example that uses the style property:
+
+    <p><a href=".">Normal link</a></p>
+    <p><a href="." style="color: green">Green link</a></p>
+
+    A style attribute may contain one or more declarations, which are a property
+    (such as color) followed by a colon and a value (such as green). When there
+    is more than one declaration, they must be separated by semicolons, as in
+    "color: red; border: none".
+
+
+
+    This text is displayed <strong>inline</strong>,
+    <strong style="display: block">as a block</strong>, and
+    <strong style="display: none">not at all</strong>.
+
+    The block tag will end up on its own line since block elements are not
+    displayed inline with the text around them. The last tag is not displayed at
+    all—display: none prevents an element from showing up on the screen. This
+    is a way to hide elements. It is often preferable to removing them from the
+    document entirely because it makes it easy to reveal them again later.
+
+
+    JavaScript code can directly manipulate the style of an element through the
+    element's style property. This property holds an object that has properties for
+    all possible style properties. The values of these properties are strings, which
+    we can write to in order to change a particular aspect of the element's style.
+    <p id="para" style="color: purple">
+        Nice text
+    </p>
+    <script>
+        let para = document.getElementById("para");
+        console.log(para.style.color);
+        para.style.color = "magenta";
+    </script>
+
+    Some style property names contain hyphens, such as font-family. Because
+    such property names are awkward to work with in JavaScript (you’d have to
+    say style["font-family"]), the property names in the style object for such
+    properties have their hyphens removed and the letters after them capitalized
+    (style.fontFamily).

@@ -1,0 +1,38 @@
+The fact that events can be processed only when nothing else is running
+means that, if the event loop is tied up with other work, any interaction with
+the page (which happens through events) will be delayed until there’s time to
+process it. So if you schedule too much work, either with long-running event
+handlers or with lots of short-running ones, the page will become slow and
+cumbersome to use.
+For cases where you really do want to do some time-consuming thing in the
+background without freezing the page, browsers provide something called web
+workers. A worker is a JavaScript process that runs alongside the main script,
+on its own timeline.
+Imagine that squaring a number is a heavy, long-running computation that
+we want to perform in a separate thread. We could write a file called code/
+squareworker.js that responds to messages by computing a square and sending
+a message back.
+
+addEventListener("message", event => {
+postMessage(event.data * event.data);
+});
+
+To avoid the problems of having multiple threads touching the same data,
+workers do not share their global scope or any other data with the main script's
+environment. Instead, you have to communicate with them by sending messages back and forth.
+This code spawns a worker running that script, sends it a few messages, and
+outputs the responses.
+let squareWorker = new Worker("code/squareworker.js");
+squareWorker.addEventListener("message", event => {
+console.log("The worker responded:", event.data);
+});
+
+squareWorker.postMessage(10);
+squareWorker.postMessage(24);
+
+The postMessage function sends a message, which will cause a "message"
+event to fire in the receiver. The script that created the worker sends and
+receives messages through the Worker object, whereas the worker talks to the
+script that created it by sending and listening directly on its global scope. Only
+values that can be represented as JSON can be sent as messages—the other
+side will receive a copy of them, rather than the value itself.
