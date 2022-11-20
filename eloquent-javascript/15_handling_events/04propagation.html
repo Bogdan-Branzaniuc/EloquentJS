@@ -1,0 +1,28 @@
+The following example registers "mousedown" handlers on both a button and
+the paragraph around it. When clicked with the right mouse button, the handler for the button calls stopPropagation,
+which will prevent the handler on
+the paragraph from running. When the button is clicked with another mouse
+button, both handlers will run.
+<p>A paragraph with a <button>button</button>.</p>
+<script>
+    let para = document.querySelector("p");
+    let button = document.querySelector("button");
+    para.addEventListener("mousedown", () => {
+        console.log("Handler for paragraph.");
+    });
+    button.addEventListener("mousedown", event => {
+        console.log("Handler for button.");
+        if (event.button == 2) event.stopPropagation();
+    });
+</script>
+
+<button>A</button>
+<button>B</button>
+<button>C</button>
+<script>
+    document.body.addEventListener("click", event => {
+        if (event.target.nodeName == "BUTTON") {
+            console.log("Clicked", event.target.textContent);
+        }
+    });
+</script>

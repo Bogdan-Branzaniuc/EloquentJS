@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+move your mouse around or drag your finger on that screen
+
+<body>
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+
+    <div id="square"></div>
+    <div id="circle"></div>
+    <style>
+        #square {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            height: 30px;
+            width: 30px;
+            background: green
+        }
+
+        #circle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            border-radius: 50%;
+            height: 35px;
+            width: 35px;
+            background: rgb(252, 43, 6)
+        }
+    </style>
+    <script>
+        document.addEventListener('mousemove', mouseTrial)
+        document.addEventListener('touchmove', mouseTrial)
+        function mouseTrial(event) {
+            let square = document.getElementById('square')
+            let circle = document.getElementById('circle')
+            if (event.type === 'mousemove') {
+                setTimeout(() => {
+                    circle.style.top = event.pageY - 15 + "px"
+                    circle.style.left = event.pageX - 15 + "px"
+                }, 50)
+                setTimeout(() => {
+                    square.style.top = event.pageY - 15 + "px"
+                    square.style.left = event.pageX - 15 + "px"
+                }, 5)
+            }
+            if (event.type === 'touchmove') {
+                setTimeout(() => {
+                    circle.style.top = event.touches[0].pageY - 15 + "px"
+                    circle.style.left = event.touches[0].pageX - 15 + "px"
+                }, 50)
+                setTimeout(() => {
+                    square.style.top = event.touches[0].pageY - 15 + "px"
+                    square.style.left = event.touches[0].pageX - 15 + "px"
+                }, 5)
+            }
+        }
+    </script>
+</body>
+
+</html>

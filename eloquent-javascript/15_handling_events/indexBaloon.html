@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<style>
+    #baloon {
+        position: absolute;
+        font-size: 40px;
+        margin-left: 10%;
+        margin-top: 20%;
+        width: 2%;
+        padding: 50px;
+    }
+</style>
+<meta name="viewport" content="width=device-width, user-scalable=no">
+
+<body>
+    <p>press "Arrow Up" to inflate the baloon</p>
+    <p>, and "Arrow Down" to deflate it.</p>
+    <p> or move your finger across the screen</p>
+    <p>Be careful though, it might popp on you</p>
+    <p id="baloon" data-help="">🎈</p>
+    <p id="help"></p>
+    <script>
+        let help = document.querySelector("#help");
+        let baloon = document.getElementById("baloon")
+        let texts = document.querySelectorAll("p")
+        document.addEventListener("keydown", poped)
+        window.addEventListener("touchmove", poped)
+        let exPoint
+        function poped(e) {
+            let baloonSize = parseInt(document.defaultView.getComputedStyle(baloon).fontSize)
+            let ballMarginLeft = parseInt(document.defaultView.getComputedStyle(baloon).marginLeft)
+            let ballMarginTop = parseInt(document.defaultView.getComputedStyle(baloon).marginTop)
+
+            if (e.type === "touchmove") {
+                let newPoint = event.touches[0].pageX
+                if (newPoint > exPoint) {
+                    baloon.style.fontSize = baloonSize + baloonSize * 0.030 + "px"
+                } else if (newPoint < exPoint && baloonSize > 40) {
+                    baloon.style.fontSize = baloonSize - baloonSize * 0.030 + "px"
+                }
+                exPoint = newPoint
+            }
+            if (e.key === "ArrowUp") {
+                baloon.style.fontSize = baloonSize + baloonSize * 0.05 + "px"
+                //baloon.style.marginLeft = ballMarginLeft - baloonSize * 0.025 + "px"
+                //baloon.style.marginTop = ballMarginTop - baloonSize * 0.024 + "px"
+
+            } else if (e.key === "ArrowDown" && baloonSize > 30) {
+                baloon.style.fontSize = baloonSize - baloonSize * 0.05 + "px"
+                //baloon.style.marginLeft = ballMarginLeft + baloonSize * 0.05 + "px"
+                // baloon.style.marginTop = ballMarginTop + baloonSize * 0.05 + "px"
+            } if (baloonSize > 250) {
+                for (let text of texts) {
+                    text.textContent = ""
+                }
+                baloon.innerHTML = '💥'
+                help.textContent = "told ya!!"
+                document.removeEventListener("keydown", poped)
+                window.removeEventListener("touchmove", poped)
+            }
+        }
+    </script>
+</body>
+
+</html>

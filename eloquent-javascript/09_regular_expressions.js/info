@@ -1,0 +1,13 @@
+\d Any digit character
+\w An alphanumeric character (“word character”)
+\s Any whitespace character (space, tab, newline, and similar)
+\D A character that is not a digit
+\W A nonalphanumeric character
+\S A nonwhitespace character
+. Any character except for newline
+
+
+
+
+debugger https://www.debuggex.com/
+this is awesome
