@@ -15,11 +15,11 @@
 https://eloquentjavascript.net/Eloquent_JavaScript.pdf
 
 ## Progress
-    // as I was studying this book by miself before working with a mentor, I did the horible mistake of not documenting my progress properly throughout the chapters and exercices. 
+as I was studying this book by miself before working with a mentor, I did the horible mistake of not documenting my progress properly throughout the chapters and exercices. 
     A documentation of my progress will be provided, but the big minus is that nothing until chapter 16 "Project: A Platform Game" will be witnessed the fresh joy and happiness of every "AHA!" moment I have had working on it.//
 ## Merits
-    Almost all the code written was inspired, coppied from the book, with the purpose of being studied.
-    The small part written by the developer constitutes the exercices at the end of each chapter, however, there are places where the book's solution made more sense than what I have written. In those cases the least functional code was commented out and the most effective and cleanner code was summoned to do it's wonders. 
+Almost all the code written was inspired, coppied from the book, with the purpose of being studied.
+The small part written by the developer constitutes the exercices at the end of each chapter, however, there are places where the book's solution made more sense than what I have written. In those cases the least functional code was commented out and the most effective and cleanner code was summoned to do it's wonders. 
  
 ## Copyright of the book
 This work is licensed under a Creative Commons attribution-noncommercial
